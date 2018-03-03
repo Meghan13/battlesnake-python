@@ -34,7 +34,7 @@ def start():
         'color': '#00FF00',
         'taunt': '{} ({}x{})'.format(game_id, board_width, board_height),
         'head_url': head_url,
-        'name': 'dallas'
+        'name': 'snakesonaboard'
     }
 
 
@@ -43,15 +43,21 @@ def move():
     data = bottle.request.json
 
     # TODO: Do things with data
-    print
-    print
     #x = json.loads(data)
     for foods in data['food']['data']:
         print foods['x']
         print foods['y']
-        print
+    
 
     goalFood = data['food']['data'][0]
+
+	
+	badSpots = set()    
+    for snakes in data['snakes']['data']:
+    	for point in snakes['body']:
+    		badSpots.add(point)
+
+
 
     #print json.dumps(data,indent=4) 
     
@@ -61,16 +67,42 @@ def move():
     directions = ['up', 'down', 'left', 'right']
     #direction = random.choice(directions)
 
-    if(goalFood['x'] < currPosHeadX):
+
+    start = (currPosHeadX, currPosHeadY)
+
+   	startL = (start[0]+1,start[1])
+   	startR = (start[0]-1,start[1])   	
+   	startU = (start[0],start[1]-1)
+   	startD = (start[0],start[1]+1)
+
+   	canGoL = True
+   	canGoR = True
+   	canGoU = True
+   	canGoD = True
+
+   	if startL in badSpots:
+   		canGoL = False
+
+	if startR in badSpots:
+   		canGoR = False
+   	
+   	if startU in badSpots:
+   		canGoU = False
+
+   	if startD in badSpots:
+   		canGoD = False   	
+
+
+   	if(goalFood['x'] < currPosHeadX and canGoL):
         direction = 'left'
     
-    if(goalFood['x'] > currPosHeadX):
+    if(goalFood['x'] > currPosHeadX and canGoR):
         direction = 'right'
     
-    if(goalFood['y'] < currPosHeadY):
+    if(goalFood['y'] < currPosHeadY and canGoU):
         direction = 'up'
     
-    if(goalFood['y'] > currPosHeadY):
+    if(goalFood['y'] > currPosHeadY and canGoD):
         direction = 'down'
 
     #print direction
