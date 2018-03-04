@@ -50,12 +50,11 @@ def move():
     
 
     goalFood = data['food']['data'][0]
-
-	
-	badSpots = []
+    badSpots = []
+    
     for snakes in data['snakes']['data']:
-    	for point in snakes['body']['data']:
-    		badSpots.append(point)
+        for point in snakes['body']['data']:
+            badSpots.append(point)
 
 
 
@@ -81,16 +80,16 @@ def move():
    	canGoD = True
 
    	if startL in badSpots:
-   		canGoL = False
+        canGoL = False
 
-	if startR in badSpots:
-   		canGoR = False
+    if startR in badSpots:
+   	    canGoR = False
    	
    	if startU in badSpots:
-   		canGoU = False
+        canGoU = False
 
    	if startD in badSpots:
-   		canGoD = False   	
+        canGoD = False   	
 
 
    	if(goalFood['x'] < currPosHeadX and canGoL):
