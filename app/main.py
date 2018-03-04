@@ -103,6 +103,7 @@ def move():
     if(goalFood['y'] > currPosHeadY and canGoD):
         direction = 'down'
 
+
     #print direction
     return {
         'move': direction,
