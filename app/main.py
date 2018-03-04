@@ -93,13 +93,13 @@ def move():
 
    	if(goalFood['x'] < currPosHeadX and canGoL):
         direction = 'left'
-    
+
     if(goalFood['x'] > currPosHeadX and canGoR):
         direction = 'right'
-    
+
     if(goalFood['y'] < currPosHeadY and canGoU):
         direction = 'up'
-    
+
     if(goalFood['y'] > currPosHeadY and canGoD):
         direction = 'down'
 
