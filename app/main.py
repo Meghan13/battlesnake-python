@@ -24,17 +24,17 @@ def start():
     board_height = data.get('height')
 
     head_url = '%s://%s/static/head.png' % (
-        bottle.request.urlparts.scheme,
-        bottle.request.urlparts.netloc
+    bottle.request.urlparts.scheme,
+    bottle.request.urlparts.netloc
     )
 
     # TODO: Do things with data
 
     return {
-        'color': '#00FF00',
-        'taunt': '{} ({}x{})'.format(game_id, board_width, board_height),
-        'head_url': head_url,
-        'name': 'snakesonaboard'
+    'color': '#00FF00',
+    'taunt': '{} ({}x{})'.format(game_id, board_width, board_height),
+    'head_url': head_url,
+    'name': 'snakesonaboard'
     }
 
 
@@ -47,11 +47,11 @@ def move():
     for foods in data['food']['data']:
         print foods['x']
         print foods['y']
-    
+
 
     goalFood = data['food']['data'][0]
     badSpots = []
-    
+
     for snakes in data['snakes']['data']:
         for point in snakes['body']['data']:
             badSpots.append(point)
@@ -59,7 +59,7 @@ def move():
 
 
     #print json.dumps(data,indent=4) 
-    
+
     currPosHeadX = data['you']['body']['data'][0]['x']
     currPosHeadY = data['you']['body']['data'][0]['y']
 
@@ -91,7 +91,7 @@ def move():
         canGoD = False
 
 
-   	if(goalFood['x'] < currPosHeadX and canGoL):
+    if(goalFood['x'] < currPosHeadX and canGoL):
         direction = 'left'
 
     if(goalFood['x'] > currPosHeadX and canGoR):
@@ -106,8 +106,8 @@ def move():
 
     #print direction
     return {
-        'move': direction,
-        'taunt': 'For the Horde!'
+    'move': direction,
+    'taunt': 'For the Horde!'
     }
 
 
@@ -115,8 +115,8 @@ def move():
 application = bottle.default_app()
 
 if __name__ == '__main__':
-    bottle.run(
-        application,
-        host=os.getenv('IP', '0.0.0.0'),
-        port=os.getenv('PORT', '8080'),
-        debug = True)
+bottle.run(
+application,
+host=os.getenv('IP', '0.0.0.0'),
+port=os.getenv('PORT', '8080'),
+debug = True)
