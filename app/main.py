@@ -54,7 +54,7 @@ def move():
 	
 	badSpots = set()    
     for snakes in data['snakes']['data']:
-    	for point in snakes['body']:
+    	for point in snakes['body']['data']:
     		badSpots.add(point)
 
 
