@@ -88,7 +88,7 @@ def move():
         canGoU = False
 
     if startD in badSpots:
-        canGoD = False   	
+        canGoD = False
 
 
    	if(goalFood['x'] < currPosHeadX and canGoL):
