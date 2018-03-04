@@ -52,10 +52,10 @@ def move():
     goalFood = data['food']['data'][0]
 
 	
-	badSpots = set()    
+	badSpots = []
     for snakes in data['snakes']['data']:
     	for point in snakes['body']['data']:
-    		badSpots.add(point)
+    		badSpots.append(point)
 
 
 
