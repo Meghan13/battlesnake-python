@@ -31,10 +31,11 @@ def start():
     # TODO: Do things with data
 
     return {
-    'color': '#00FF00',
+    'color': '#C5B358',
     'taunt': '{} ({}x{})'.format(game_id, board_width, board_height),
-    'head_url': head_url,
-    'name': 'snakesonaboard'
+    'head_url': 'fang',
+    'tail_url': 'fat-rattle',
+    'name': 'Snakes on a Board'
     }
 
 
@@ -107,7 +108,7 @@ def move():
     #print direction
     return {
     'move': direction,
-    'taunt': 'For the Horde!'
+    'taunt': 'Eat a bag of snakes!'
     }
 
 
